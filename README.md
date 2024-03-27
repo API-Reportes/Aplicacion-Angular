@@ -1,2 +1,2 @@
-# Aplicaci-n-Angular
+# Aplicacion-Angular
 Aplicación para levantar reportes de fallas o limpieza
