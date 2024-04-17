@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{ data.titulo }}</h2>
+<mat-dialog-content [innerHTML]="data.contenido">{{ data.contenido }}</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="borrarPregunta(data.reporteId)">Confirmar</button>
+</mat-dialog-actions>

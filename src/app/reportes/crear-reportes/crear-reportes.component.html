@@ -1,0 +1,87 @@
+<div class="container">
+
+    <form class="example-form" [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
+
+            @for(item of preguntas; track item){
+
+                <h2>{{item.enunciadoPregunta}}</h2>
+
+                @switch (item.tipoPregunta) {
+
+                    @case ('abierta') {
+                        
+                        <table class="example-full-width">
+                            <td><mat-form-field class="example-full-width">
+                                <mat-label>Respuesta</mat-label>
+                                <input matInput formControlName={{item.id}} required>
+                            </mat-form-field></td>
+                        </table>
+                        
+                    }
+
+                    @case ('cerrada') {
+                        
+                        @switch (item.subTipoPregunta) {
+
+                            @case ('Radiobutton') {
+
+                                    <mat-radio-group formControlName={{item.id}} class="example-radio-group">
+                                        @for(opcion of item.opciones; track opcion; let i = $index){
+                                            <mat-radio-button value={{i}} class="example-radio-button">{{opcion}}</mat-radio-button>
+                                        }
+                                    </mat-radio-group>
+                            }
+
+                            @case ('Checkbox') {
+                                    <div>
+                                        <ul>
+                                            @for(opcion of item.opciones; track opcion; let i = $index){
+                                            <li>
+                                                <mat-checkbox formControlName={{opcion}}>{{opcion}}</mat-checkbox>
+                                            </li>
+                                        }
+                                        </ul>
+                                    </div>
+                            }
+
+                            @case ('ComboBox') {
+
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Selecciona una opción</mat-label>
+                                    <mat-select disableRipple formControlName={{item.id}} required>
+                                        @for(opcion of item.opciones; track opcion; let i = $index){
+                                            <mat-option value={{i}}>{{opcion}}</mat-option>
+                                        }
+                                    </mat-select>
+                                </mat-form-field>
+                            }
+                            
+                        }
+                    }  
+
+                    @case ('imagen') {
+                        
+                        <div class="imagen">
+        
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)">
+                    
+                        </div>
+                        
+                    }
+
+                    @case ('mapa') {
+                        
+                    }
+                }
+                <mat-divider></mat-divider>
+            }  
+            <div id="map"></div>
+            
+            <br>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid">Enviar</button>
+
+    </form>
+
+
+</div>

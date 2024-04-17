@@ -1,0 +1,14 @@
+/node_modules
+
+/docs
+
+/gitignore
+
+.angular
+
+.git
+
+.firebase
+
+.editorconfig
+

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Escribe la nueva pregunta:</h2>
+<mat-dialog-content>
+    <form [formGroup]="Pregunta" (ngSubmit)="actualizaPregunta(data, Pregunta.value)">
+
+        <td><mat-form-field>
+          <mat-label>Enunciado</mat-label>
+          <input matInput placeholder="Ex. ¿Como te llamas?" id="idPregunta" formControlName="enunciadoPregunta" required>
+        </mat-form-field></td>
+        
+        <button mat-raised-button color="primary" type="submit" [disabled]="Pregunta.invalid">Actualizar</button>
+        <button mat-raised-button color="primary" type="button" class="botones" (click)="onNoClick()">Cancelar</button>
+      </form>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit" [disabled]="Pregunta.invalid">Actualizar</button>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Cancelar</button>
+</mat-dialog-actions> -->

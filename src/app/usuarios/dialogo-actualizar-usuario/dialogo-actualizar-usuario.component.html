@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Escribe los cambios que deseas hacer:</h2>
+<mat-dialog-content>
+    <form [formGroup]="Usuario" (ngSubmit)="actualizaUsuario(data, Usuario)" class="form-container">
+  
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ex. Christian Lara Aguilar" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput formControlName="fecha_nacimiento" placeholder="DD-MM-AAAA" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="email" placeholder="@gmail.com, @hotmail.com" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
+      
+      <div class="buttons-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="Usuario.invalid">Actualizar</button>
+        <button mat-raised-button color="primary" type="button" class="botones" (click)="onNoClick()">Cancelar</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  

@@ -1,0 +1,73 @@
+<h2>Editar preguntas</h2>
+
+<div class="container">
+  <form [formGroup]="buscadorPregunta" (ngSubmit)="buscador(buscadorPregunta.value)">
+
+    <td><mat-form-field>
+      <mat-label>Buscar por id</mat-label>
+      <input matInput placeholder="Ex. 65cc47882b95345c3e267e2d" id="idPregunta" formControlName="idPregunta" required>
+    </mat-form-field></td>
+    
+    <button mat-raised-button color="primary" type="submit" [disabled]="buscadorPregunta.invalid">Buscar</button>
+
+  </form>
+</div>
+
+@if(resultadoBusqueda){
+  <div class="container">  
+    <mat-card class="example-card-search">
+      <mat-card-header>
+        <mat-card-title class="custom-content">{{ resultadoBusqueda.enunciadoPregunta}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="custom-content">Tipo pregunta: {{ resultadoBusqueda.tipoPregunta}}</p> 
+        <p class="custom-content">Subtipo pregunta: {{ resultadoBusqueda.subTipoPregunta}}</p>
+        <p class="custom-content">Opciones:</p>
+        @for(p of resultadoBusqueda.opciones; track p){
+          <p class="custom-content"> {{ p }}</p>
+        }
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="botones" (click)="dialogoActualiza(resultadoBusqueda.id)">Actualizar</button>
+        <button mat-raised-button class="botones" (click)="dialogoBorra(resultadoBusqueda)">Eliminar</button>
+    </mat-card-actions>
+    </mat-card>
+  </div>
+}
+@if(resultadoBusqueda == false){
+    <div class="container">  
+      <mat-card class="example-card-search">
+        <mat-card-header>
+          <mat-card-title class="custom-content">No se encontraron resultados.</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+}
+
+<div class="container-cards">
+    @for(item of preguntas; track item; let i = $index){
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{i + 1}}.{{item.enunciadoPregunta}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Tipo pregunta: {{ item.tipoPregunta}}</p> 
+          @if(item.subTipoPregunta){
+            <p>Subtipo de pregunta: {{ item.subTipoPregunta}}</p> 
+          }
+          <!-- <p>Tipo pregunta: {{ item.tipoPregunta}}</p>
+          <p>Subtipo pregunta: {{ item.subTipoPregunta}}</p> -->
+          @if(item.opciones){
+            <p>Opciones:</p>
+          }
+          @for(p of item.opciones; track p){
+            <p> {{ p }}</p>
+          }
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="botones" (click)="dialogoActualiza(item.id)">Actualizar</button>
+            <button mat-raised-button color="primary" class="botones" (click)="dialogoBorra(item)">Eliminar</button>
+        </mat-card-actions>
+      </mat-card>
+    }  
+  </div>

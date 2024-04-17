@@ -1,0 +1,95 @@
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* Estilo para los enlaces dentro de la barra de herramientas */
+  mat-toolbar a {
+    color: white; /* Cambia el color según tus preferencias */
+    text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
+  }
+  
+  /* Cambia el color cuando el enlace está siendo hover */
+  mat-toolbar a:hover {
+    color: lightgray; /* Cambia el color de resaltado cuando el ratón pasa por encima */
+  }
+  .spacer {
+    flex: 1; /* Toma todo el espacio disponible */
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between; /* Para distribuir los elementos horizontalmente */
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 16px; /* Espaciado entre enlaces */
+    margin-left: 20px;
+  }
+  
+  .nav {
+    margin-right: 20px;
+  }
+  
+  .custom-menu a {
+    display: block; /* Esto hace que los elementos se muestren en una columna */
+  }
+  
+  .example-sidenav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación a la izquierda */
+    justify-content: flex-start; /* Justificación al inicio */
+    height: 100%; /* Altura completa */
+    color: #3F51B5;
+  }
+  
+  .mat-drawer {
+    position: fixed;  /* Fija la posición del drawer */
+    top: 0;           /* Coloca el drawer en la parte superior */
+    bottom: 0;        /* Hace que el drawer ocupe toda la altura */
+    width: 170px;     /* Ancho del drawer, puedes ajustarlo según tus necesidades */
+  }
+  
+  .mat-drawer-container {
+    height: 100vh;    /* Hace que el drawer container ocupe toda la altura de la ventana */
+    color: #3F51B5;
+  }
+  
+  .example-sidenav-content {
+    margin-left: 250px; /* Espacio a la izquierda para el contenido principal */
+  }
+  
+  .left-links,
+  .right-links {
+    display: flex; /* Hace que los elementos dentro de estos divs se muestren en línea */
+  }
+  
+  .right-links {
+    margin-left: auto; /* Empuja estos elementos hacia la derecha tanto como sea posible */
+  }
+  
+  /* Estilo por defecto para el botón */
+  .mobile-only {
+    display: none; /* Oculta el botón por defecto */
+  }
+  
+  .mobile-hide {
+    display: block; /* Muestra el div por defecto */
+  }
+  
+  /* Mostrar el botón solo en dispositivos con ancho máximo de 600px (ajusta según tus necesidades) */
+  @media (max-width: 768px) {
+    .mobile-only {
+      display: inline-block; /* Muestra el botón */
+    }
+    .mobile-hide {
+      display: none; /* Oculta el div */
+    }
+  }
+  
+  @media (max-width: 1440px) {
+  
+  }
+  
+  

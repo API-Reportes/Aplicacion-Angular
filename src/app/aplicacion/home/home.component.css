@@ -1,0 +1,13 @@
+/* src/styles.css o en el archivo CSS del componente */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Opcional: Ajusta la altura según tus necesidades */
+  }
+  
+  .centered-image {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen si es necesario */
+    max-height: 100%; /* Ajusta el tamaño máximo de la imagen si es necesario */
+  }
+  

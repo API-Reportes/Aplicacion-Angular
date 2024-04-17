@@ -1,0 +1,90 @@
+<mat-drawer-container autosize class="mat-drawer-container">
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+
+    @switch (rolUsuario) {
+      @case ('ROLE_administrador') {
+
+        <h2>Preguntas</h2>
+        <a href="/Preguntas" mat-menu-item>Registrar</a>
+        <a href="/borrarPregunta" mat-menu-item>Editar</a>
+  
+
+        <h2>Usuarios</h2>
+        <a href="/borrarUsuario" mat-menu-item>Editar</a>
+
+
+        <h2>Reportes</h2>
+        <a href="/registroReportes" mat-menu-item>Ver reportes</a>
+
+      }
+      @case ('ROLE_publicador') {
+
+        <h2>Reportes</h2>
+        <mat-menu>
+        </mat-menu>
+        <a href="/Reportes" mat-menu-item>Crear reporte</a>
+        
+      }
+    } 
+
+  </mat-drawer>
+
+  <mat-toolbar color="primary">
+
+    @if(isLoggedIn) {
+      <button class="mobile-only" type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    }
+    
+    <div class="left-links mobile-hide">
+    @if(isLoggedIn) {
+        @switch (rolUsuario) {
+          @case ('ROLE_administrador') {
+            <div class="nav-container">
+              <nav class="nav-links">
+                <mat-menu #menu1="matMenu">
+                  <a href="/Preguntas" mat-menu-item>Registrar</a>
+                  <a href="/borrarPregunta" mat-menu-item>Modificar</a>
+                </mat-menu>
+                <a [matMenuTriggerFor]="menu1">Preguntas</a>
+              </nav>
+            
+              <nav class="nav-links">
+                <mat-menu #menu2="matMenu">
+                </mat-menu>
+                <a href="/borrarUsuario">Usuarios</a>
+              </nav>
+  
+              <nav class="nav-links">
+                <mat-menu #menu3="matMenu">
+                </mat-menu>
+                <a href="/registroReportes">Reportes</a>
+              </nav>
+            </div>           
+          }
+          @case ('ROLE_publicador') {
+            <a href="/Reportes" mat-menu-item>Crear reporte</a>
+          }
+        } 
+      }
+    </div>
+    <div class="right-links">
+      @if(!isLoggedIn) {
+        <nav class="nav-links">
+          <a href="/Login">Login</a>
+          <a href="/Registro">Registro</a>
+        </nav>
+      }
+      @if(isLoggedIn) {
+        <a href="/perfilUsuario" class="nav">{{nombreUsuario}}</a>
+        <a href="/Home" (click)="logout()">Logout</a>
+      }
+    </div>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
+

@@ -1,0 +1,68 @@
+<h2>Reportes</h2>
+
+<div class="container">
+  <form [formGroup]="buscadorReporte" (ngSubmit)="buscador(buscadorReporte.value)">
+
+    <td><mat-form-field>
+      <mat-label>Buscar por id</mat-label>
+      <input matInput placeholder="Ex. 65cc47882b95345c3e267e2d" formControlName="id" required>
+    </mat-form-field></td>
+    
+    <button mat-raised-button color="primary" type="submit" [disabled]="buscadorReporte.invalid">Buscar</button>
+
+  </form>
+</div>
+
+@if(resultadoBusqueda){
+<!-- <h4>{{resultadoBusqueda.length}}</h4> -->
+    <div class="container">  
+        @for(item of resultadoBusqueda; track item){
+            <mat-card class="example-card-search">
+              <mat-card-header>
+                <mat-card-title class="custom-content">{{ item.nombre}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                @for(p of item.preguntas; track p; let i = $index){
+                  <p class="custom-content"><strong> {{ p }}</strong></p>
+                  <p class="custom-content"> {{ item.respuestas[i] }}</p>
+                }
+                <p class="custom-content"> {{ item.fechaCreacion}}</p> 
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button class="botones" (click)="dialogoBorra(item)">Eliminar</button>
+              </mat-card-actions>
+            </mat-card>
+        }
+    </div>
+}
+
+@if(noHayResultados){
+    <div class="container">  
+      <mat-card class="example-card-search">
+        <mat-card-header>
+          <mat-card-title class="custom-content">No se encontraron resultados.</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+}
+
+<div class="container-cards">
+  @for(item of resultados; track item; let j = $index){
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ item.nombre}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        @for(p of item.preguntas; track p; let i = $index){
+          <p><strong>{{ p }}</strong></p>
+          <p> {{ item.respuestas[i] }}</p>
+        }
+        <p>Fecha del reporte: {{ item.fechaCreacion}}</p> 
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="botones" (click)="dialogoBorra(item)">Eliminar</button>
+      </mat-card-actions>
+    </mat-card>
+  }  
+</div>
+  

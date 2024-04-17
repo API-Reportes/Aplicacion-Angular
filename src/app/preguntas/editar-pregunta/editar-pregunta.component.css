@@ -1,0 +1,61 @@
+.example-card {
+    margin-bottom: 20px; /* Ajusta este valor según el espacio deseado entre las tarjetas */
+    width: 80%; /* Ajusta el ancho de las tarjetas según tus necesidades */
+    max-width: 400px; /* Establece un ancho máximo para evitar que las tarjetas se vuelvan demasiado grandes en pantallas grandes */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}  
+
+.example-card-search {
+    margin-bottom: 20px; /* Ajusta este valor según el espacio deseado entre las tarjetas */
+    width: 80%; /* Ajusta el ancho de las tarjetas según tus necesidades */
+    max-width: 400px; /* Establece un ancho máximo para evitar que las tarjetas se vuelvan demasiado grandes en pantallas grandes */
+    background-color: #3F51B5;
+}
+
+.custom-content {
+    color: white; /* Cambia este color al que desees para el contenido */
+  }
+
+.botones{
+    margin-left: 1rem; /* 6px */;
+  }
+
+  @media (max-width: 768px) {
+
+    .container-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }  
+  }
+  
+  @media (min-width: 769px) and (max-width: 1440px) {
+  
+    .container-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Divide el contenedor en dos columnas */
+        gap: 20px; /* Espacio entre las tarjetas */
+        padding-left: 100px; /* Espacio entre las tarjetas y el borde izquierdo de la ventana */
+        
+      }          
+  
+  }
+
+  @media (min-width: 1440px) and (max-width: 2560px) {
+    
+    .container-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Divide el contenedor en dos columnas */
+        gap: 20px; /* Espacio entre las tarjetas */
+        padding-left: 100px; /* Espacio entre las tarjetas y el borde izquierdo de la ventana */
+        
+      }          
+  
+  }

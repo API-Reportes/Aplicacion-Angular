@@ -1,0 +1,22 @@
+.botones{
+    margin-left: 1rem; /* 6px */;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-row {
+    margin-bottom: 16px; /* Espacio entre los campos */
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: space-between; /* Alinear botones */
+  }
+  
+  .form-field {
+    width: 100%; /* Opcional: hacer que los campos ocupen todo el ancho */
+  }
+  

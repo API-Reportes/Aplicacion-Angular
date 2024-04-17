@@ -1,0 +1,70 @@
+#map { height: 400px;
+}
+
+.example-form {
+   min-width: 150px;
+   max-width: 800px;
+   width: 100%;
+ }
+ 
+ .example-full-width {
+   width: 100%;
+ }
+ 
+ td {
+   padding-right: 8px;
+ }  
+ 
+ /* Estilo para centrar el formulario */
+ .container {
+   display: grid;
+   justify-content: center;
+   align-items: center;
+   height: 100vh; /* Esto centra verticalmente en la pantalla */
+ }
+
+ ul {
+   list-style-type: none;
+   margin-top: 4px;
+ }
+
+ .example-radio-group {
+   display: flex;
+   flex-direction: column;
+   margin: 15px 0;
+   align-items: flex-start;
+ }
+
+ .example-radio-button {
+   margin: 5px;
+ }
+
+ .imagen {
+   display: grid;
+   /* justify-content: center; */
+   align-items: center;
+   height: 10vh; /* Esto centra verticalmente en la pantalla */
+ }
+ 
+ @media (max-width: 768px) {
+
+   #map { height: 300px;
+   }   
+
+   .example-form {
+     min-width: 150px;
+     max-width: 300px;
+     width: 100%;
+   }
+
+ }
+ 
+ @media (min-width: 769px) and (max-width: 1440px) {
+ 
+   .example-form {
+     min-width: 150px;
+     max-width: 800px;
+     width: 100%;
+   }
+ 
+ }

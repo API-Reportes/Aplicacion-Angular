@@ -1,0 +1,94 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <h2>Registrar preguntas</h2>
+
+
+  <mat-vertical-stepper [linear]="isLinear" #stepper class="stepper-container">
+    <mat-step [stepControl]="ceroFormGroup" label="Escribe el enunciado de la pregunta">
+      <form [formGroup]="ceroFormGroup">
+        <mat-form-field class="example-full-width">
+          <mat-label>Pregunta</mat-label>
+          <input matInput formControlName="enunciadoPregunta" placeholder="Ex. ¿Como te llamas?" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Selecciona el tipo de pregunta</ng-template>
+        <mat-form-field>
+          <mat-label>Tipos de preguntas</mat-label>
+          <mat-select disableRipple formControlName="tipoPregunta" required>
+            <mat-option value="abierta">Abierta</mat-option>
+            <mat-option value="cerrada">Cerrada</mat-option>
+            <mat-option value="mapa">Mapa</mat-option>
+            <mat-option value="imagen">Imagen</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="botones-container">
+          <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+          <button mat-raised-button color="primary" class="botones" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    @switch (firstFormGroup.get('tipoPregunta')?.value) {
+      @case ('cerrada') {
+        <mat-step [stepControl]="secondFormGroup" label="Introduce el tipo de respuesta">
+          <form [formGroup]="secondFormGroup">
+              <mat-radio-group formControlName="subTipoPregunta">
+                <mat-radio-button value="Radiobutton">Radio button</mat-radio-button>
+                <mat-radio-button value="ComboBox">Combo box</mat-radio-button>
+                <mat-radio-button value="Checkbox">Check box</mat-radio-button>
+              </mat-radio-group>
+              
+              <div class="botones-container">
+                <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+                <button mat-raised-button color="primary" class="botones" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Introduce las opciones separadas por una coma">
+          <form [formGroup]="thirdFormGroup">
+            <mat-form-field class="example-full-width">
+                <mat-label>Opciones</mat-label>
+                       <input matInput formControlName="opciones" placeholder="Ex. Melón, Sandía, Fresa"
+                       required>
+            </mat-form-field>
+            <div class="botones-container">
+              <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+              <button mat-raised-button color="primary" class="botones" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+      }
+      @default {
+
+      }
+    }
+    <mat-step>
+      <ng-template matStepLabel>Hecho</ng-template>
+      <h2>¿Estás seguro de subir esta pregunta?:</h2>
+      <div class="container">  
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{ceroFormGroup.get('enunciadoPregunta')?.value}}</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+          </mat-card-header>
+          <mat-card-content>
+            <p> {{firstFormGroup.get('tipoPregunta')?.value}}</p>
+            <p> {{secondFormGroup.get('subTipoPregunta')?.value}}</p>
+            <p> {{thirdFormGroup.get('opciones')?.value}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="botones-container">
+        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+        <button mat-raised-button color="primary" class="botones" (click)="registarPregunta(); stepper.reset()">Finalizar</button>
+        <button mat-raised-button color="primary" class="botones" (click)="stepper.reset()">Reiniciar</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+  
