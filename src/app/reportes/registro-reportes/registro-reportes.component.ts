@@ -201,6 +201,24 @@ export class RegistroReportesComponent {
           usuario.respuestas.push(this.respuesta.respuesta[this.i]);
         }
 
+        if(responsePregunta!["tipoPregunta"] == "imagen"){
+          // console.log(this.i)
+          if(this.respuesta.respuesta[this.i]){
+            usuario.respuestas.push("Con imagen");
+          }else{
+            usuario.respuestas.push("Sin imagen");
+          }
+        }
+
+        if(responsePregunta!["tipoPregunta"] == "mapa"){
+          // console.log(this.i)
+          if(this.respuesta.respuesta[this.i]){
+            usuario.respuestas.push(this.respuesta.respuesta[this.i]);
+          }else{
+            usuario.respuestas.push("Sin coordenadas");
+          }
+        }
+
         if(responsePregunta!["tipoPregunta"] == "cerrada"){
               
           // console.log("Posicion de la respuesta contestada:  " + reporte.respuesta[this.i])
@@ -267,12 +285,30 @@ export class RegistroReportesComponent {
               // console.log(this.i)
               usuario.respuestas.push(reporte.respuesta[this.i]);
             }
+
+            if(responsePregunta!["tipoPregunta"] == "imagen"){
+              // console.log(this.i)
+              if(reporte.respuesta[this.i]){
+                usuario.respuestas.push("Con imagen");
+              }else{
+                usuario.respuestas.push("Sin imagen");
+              }
+            }
+    
+            if(responsePregunta!["tipoPregunta"] == "mapa"){
+              // console.log(this.i)
+              if(reporte.respuesta[this.i]){
+                usuario.respuestas.push(reporte.respuesta[this.i]);
+              }else{
+                usuario.respuestas.push("Sin coordenadas");
+              }
+            }            
             
             if(responsePregunta!["tipoPregunta"] == "cerrada"){
               
               // console.log("Posicion de la respuesta contestada:  " + reporte.respuesta[this.i])
               if(responsePregunta!["subTipoPregunta"] == "Checkbox"){ //respuestas cerrada de múltiples valores (Checkbox)
-                const arr = JSON.parse(this.respuesta.respuesta[this.i]).map(Number);
+                const arr = JSON.parse(reporte.respuesta[this.i]).map(Number);
                 let cbox = ""
                 for(const res of arr){
                     cbox += (cbox != "" ? ", " : "") + responsePregunta!["opciones"][res];
@@ -280,7 +316,7 @@ export class RegistroReportesComponent {
                 usuario.respuestas.push(cbox);
               }
               else{ // respuestas cerrada de un solo valor
-                  const opcerrada = responsePregunta!["opciones"][parseInt(this.respuesta.respuesta[this.i])]
+                  const opcerrada = responsePregunta!["opciones"][parseInt(reporte.respuesta[this.i])]
                   usuario.respuestas.push(opcerrada);
               }
                 
