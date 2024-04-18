@@ -111,6 +111,24 @@ export class PerfilUsuarioComponent {
               usuario.respuestas.push(reporte.respuesta[this.i]);
             }
 
+            if(responsePregunta!["tipoPregunta"] == "imagen"){
+              // console.log(this.i)
+              if(reporte.respuesta[this.i]){
+                usuario.respuestas.push("Con imagen");
+              }else{
+                usuario.respuestas.push("Sin imagen");
+              }
+            }
+    
+            if(responsePregunta!["tipoPregunta"] == "mapa"){
+              // console.log(this.i)
+              if(reporte.respuesta[this.i]){
+                usuario.respuestas.push(reporte.respuesta[this.i]);
+              }else{
+                usuario.respuestas.push("Sin coordenadas");
+              }
+            }
+
             if(responsePregunta!["tipoPregunta"] == "cerrada"){
               
               // console.log("Posicion de la respuesta contestada:  " + reporte.respuesta[this.i])
@@ -183,6 +201,24 @@ export class PerfilUsuarioComponent {
         if(responsePregunta!["tipoPregunta"] == "abierta"){
           // console.log(this.i)
           usuario.respuestas.push(this.respuesta.respuesta[this.i]);
+        }
+
+        if(responsePregunta!["tipoPregunta"] == "imagen"){
+          // console.log(this.i)
+          if(this.respuesta.respuesta[this.i]){
+            usuario.respuestas.push("Con imagen");
+          }else{
+            usuario.respuestas.push("Sin imagen");
+          }
+        }
+
+        if(responsePregunta!["tipoPregunta"] == "mapa"){
+          // console.log(this.i)
+          if(this.respuesta.respuesta[this.i]){
+            usuario.respuestas.push(this.respuesta.respuesta[this.i]);
+          }else{
+            usuario.respuestas.push("Sin coordenadas");
+          }
         }
 
         if(responsePregunta!["tipoPregunta"] == "cerrada"){
