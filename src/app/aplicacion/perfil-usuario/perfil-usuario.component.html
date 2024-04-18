@@ -43,7 +43,7 @@
               </mat-card-header>
               <mat-card-content>
                 @for(p of item.preguntas; track p; let i = $index){
-                  <p class="custom-content"> {{ p }}</p>
+                  <p class="custom-content"><strong> {{ p }}</strong></p>
                   <p class="custom-content"> {{ item.respuestas[i] }}</p>
                 }
                 <p class="custom-content"> {{ item.fechaCreacion}}</p> 
@@ -74,7 +74,7 @@
         </mat-card-header>
         <mat-card-content>
           @for(p of item.preguntas; track p; let i = $index){
-            <p> {{ p }}</p>
+            <p><strong>{{ p }}</strong> </p>
             <p> {{ item.respuestas[i] }}</p>
           }
           <p> {{ item.fechaCreacion}}</p> 
